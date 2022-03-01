@@ -1,0 +1,79 @@
+integer : Copyright 2022 : Aldrin Mathew
+
+AAF DEPENDABLE LICENSE - 1.0
+
+This library is licensed under the AAF Dependable License 1.0. 
+You are allowed to use this library as a dependency in your 
+project(s) WITHOUT having to release/make available your own 
+project(s) under the same license.
+
+Unless required by applicable law, this library is provided 
+"AS IS", WITHOUT ANY WARRANTIES OR PROMISES OF ANY KIND, either 
+expressed or implied. The author(s) of the project is not 
+liable for any harms, errors or troubles caused by using this 
+library, unless implied by law. By using this license, you are 
+acknowledging the complete terms and conditions of licensing of 
+this library as specified in AAF Dependable License 1.0 available 
+at this URL: 
+
+https://github.com/aldrinsartfactory/DependableLicense/ 
+
+You are NOT ALLOWED to sell, or distribute THIS library under 
+commercial or non-commercial purposes. You are however, allowed 
+to use this library in your own project and also to license 
+your project in any license as you please. You are not allowed 
+to revamp, rebrand, refactor, modify, the contents of this 
+library.
+
+Using bindings, wrappers or container concepts, or any other 
+logic to rehash the contents of this library so as to expose 
+this library or to provide the functionalities of this library 
+as a different library is NOT PERMITTED under this license, 
+even if the new library/package/solution/source... has the same 
+license.
+
+Your project should contain "original work", ideally, the 
+definition of which is agreed upon by the community. If it does 
+contain original work, you are not allowed to publish your 
+project. Using this library to achieve that is not a violation 
+of this license. You are NOT ALLOWED to use the name, branding 
+and identity of this library to identify or brand your own 
+project. You ARE however allowed to use the name and branding to 
+pinpoint/show the source of the contents/code/logic of your 
+project. You are not allowed to use the identification of the 
+Authors of this library to associate them to your own projects, 
+in a way that is deceiving/misleading or gives out false 
+information.
+
+
+DEFINITIONS
+
+1. "This license", "same license" refers to the AAF Dependable 
+License 1.0
+
+2. "This library", "this project", "the library" & "the project" 
+all refers to the project that is subject to this license. The 
+term "library" can be replaced by other terms like "package", 
+"bundle", "plugin"... depending on the context.
+
+3. "You", "your" refers to the licensee. The licensee can be a 
+person, a group of people, an organisation or an entity. In short, 
+licensee is an entity that uses this library.
+
+4. "community" can refer to the collective public, a specific 
+group of people related to the project or an arbitrary group of 
+people.
+
+
+COMMENTS
+
+The traditional definition of open source is flawed, as it is 
+often meant to be "Free and Open Source" instead of just "Open 
+Source". And because of that, this license is not compatible 
+with the definition of Open Source by the Open Source Initiative 
+(OSI). Instead this license follows the true meaning of open 
+source, allowing the source to be inspected and verified by the 
+public free of cost. However, advertising that this license is 
+an Open Source compatible license can lead to ambiguity and 
+confusion. Hence we choose to identify this license as belonging 
+to the "Shared Source" family of licenses.
