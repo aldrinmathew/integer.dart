@@ -19,4 +19,40 @@ extension ClampToUnsignedInteger on int {
     }
     return this % (1 << bitWidth);
   }
+
+  /// Convert the value to 4-bit Unsigned Integer
+  ///
+  /// Minimum = `0`
+  ///
+  /// Maximum = `15`
+  int get uint4 {
+    return this % 16;
+  }
+
+  /// Convert the value to 8-bit Unsigned Integer
+  ///
+  /// Minimum = `0`
+  ///
+  /// Maximum = `255`
+  int get uint8 {
+    return this % 256;
+  }
+
+  /// Convert the value to 16-bit Unsigned Integer
+  ///
+  /// Minimum = `0`
+  ///
+  /// Maximum = `65535`
+  int get uint16 {
+    return this % 65536;
+  }
+
+  /// Convert the value to 32-bit Unsigned Integer
+  ///
+  /// Minimum = `0`
+  ///
+  /// Maximum = `4294967295`
+  int get uint32 {
+    return this % 4294967296;
+  }
 }
