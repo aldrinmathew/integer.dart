@@ -36,4 +36,92 @@ extension ClampToSignedInteger on int {
       return value;
     }
   }
+
+  /// Convert the value to a 4-bit Signed Integer
+  ///
+  /// Minimum = `-8`
+  ///
+  /// Maximum = `7`
+  int get int4 {
+    int value = this;
+    if (value < -8) {
+      value = value + 9;
+      value = value.remainder(16);
+      value = 7 + value;
+      return value;
+    } else if (value > 7) {
+      value = value - 8;
+      value = value.remainder(16);
+      value = -8 + value;
+      return value;
+    } else {
+      return value;
+    }
+  }
+
+  /// Convert the value to a 8-bit Signed Integer
+  ///
+  /// Minimum = `-128`
+  ///
+  /// Maximum = `127`
+  int get int8 {
+    int value = this;
+    if (value < -128) {
+      value = value + 129;
+      value = value.remainder(256);
+      value = 127 + value;
+      return value;
+    } else if (value > 127) {
+      value = value - 128;
+      value = value.remainder(256);
+      value = -128 + value;
+      return value;
+    } else {
+      return value;
+    }
+  }
+
+  /// Convert the value to a 16-bit Signed Integer
+  ///
+  /// Minimum = `-32768`
+  ///
+  /// Maximum = `32767`
+  int get int16 {
+    int value = this;
+    if (value < -32768) {
+      value = value + 32769;
+      value = value.remainder(65536);
+      value = 32767 + value;
+      return value;
+    } else if (value > 32767) {
+      value = value - 32768;
+      value = value.remainder(65536);
+      value = -32768 + value;
+      return value;
+    } else {
+      return value;
+    }
+  }
+
+  /// Convert the value to a 32-bit Signed Integer
+  ///
+  /// Minimum = `-2147483648`
+  ///
+  /// Maximum = `2147483647`
+  int get int32 {
+    int value = this;
+    if (value < -2147483648) {
+      value = value + 2147483649;
+      value = value.remainder(4294967296);
+      value = 2147483647 + value;
+      return value;
+    } else if (value > 2147483647) {
+      value = value - 2147483648;
+      value = value.remainder(4294967296);
+      value = -2147483648 + value;
+      return value;
+    } else {
+      return value;
+    }
+  }
 }
