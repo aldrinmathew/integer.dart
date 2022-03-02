@@ -20,6 +20,24 @@ extension ClampToUnsignedInteger on int {
     return this % (1 << bitWidth);
   }
 
+  /// Convert the value to 1-bit Unsigned Integer
+  ///
+  /// Minimum = `0`
+  ///
+  /// Maximum = `1`
+  int get uint1 {
+    return this % 2;
+  }
+
+  /// Convert the value to 2-bit Unsigned Integer
+  ///
+  /// Minimum = `0`
+  ///
+  /// Maximum = `3`
+  int get uint2 {
+    return this % 4;
+  }
+
   /// Convert the value to 4-bit Unsigned Integer
   ///
   /// Minimum = `0`

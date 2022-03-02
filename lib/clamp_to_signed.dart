@@ -37,6 +37,28 @@ extension ClampToSignedInteger on int {
     }
   }
 
+  /// Convert the value to a 2-bit Signed Integer
+  ///
+  /// Minimum = `-2`
+  ///
+  /// Maximum = `1`
+  int get int2 {
+    int value = this;
+    if (value < -2) {
+      value = value + 3;
+      value = value.remainder(4);
+      value = 1 + value;
+      return value;
+    } else if (value > 1) {
+      value = value - 2;
+      value = value.remainder(4);
+      value = -2 + value;
+      return value;
+    } else {
+      return value;
+    }
+  }
+
   /// Convert the value to a 4-bit Signed Integer
   ///
   /// Minimum = `-8`
