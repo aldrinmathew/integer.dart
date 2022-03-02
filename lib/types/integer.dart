@@ -44,6 +44,8 @@ abstract class integer {
 
   ix operator -();
 
+  ux abs();
+
   int get sign => _value.sign;
 
   integer round();

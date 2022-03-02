@@ -125,6 +125,12 @@ class ix extends integer {
   }
 
   @override
+  ux abs() {
+    _value = _value.abs().intX(bits);
+    return ux(bits: bits, value: value);
+  }
+
+  @override
   ix round() {
     _value = _value.round().intX(bits);
     return this;
