@@ -3,8 +3,6 @@
 library integer;
 
 part 'types/integer.dart';
-part 'clamp_to_signed.dart';
-part 'clamp_to_unsigned.dart';
 part 'types/extensions.dart';
 part 'types/ix.dart';
 part 'types/i2.dart';
