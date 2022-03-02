@@ -3,7 +3,7 @@
 part of integer;
 
 /// Signed Integer with custom bit-width
-class ix extends integer {
+class ix extends SignedInteger {
   int _bits;
 
   /// Bitwidth of this integer. This is same as [bitLength]
@@ -13,16 +13,26 @@ class ix extends integer {
     required int bits,
     required int value,
   })  : _bits = bits,
-        super(value: value);
+        super(value: value.intX(bits));
 
-  factory ix.fromEnvironment(int bits, String name, {int defaultValue = 0}) {
+  ix.integer(integer val, {required int bits})
+      : _bits = bits,
+        super(value: val.value.intX(bits));
+
+  factory ix.fromEnvironment(
+    String name, {
+    required int bits,
+    int defaultValue = 0,
+  }) {
     return ix(
       bits: bits,
-      value: int.fromEnvironment(name, defaultValue: defaultValue),
+      value: int.fromEnvironment(name, defaultValue: defaultValue.intX(bits)),
     );
   }
 
-  ix.parse(this._bits, String source) : super(value: int.parse(source));
+  ix.parse(String source, {required int bits})
+      : _bits = bits,
+        super(value: int.parse(source).intX(bits));
 
   static ix? tryParse(int bits, String source) {
     int? val = int.tryParse(source);
@@ -32,145 +42,81 @@ class ix extends integer {
     return null;
   }
 
-  @override
-  ix operator *(integer other) {
-    _value = (value * other.value).intX(bits);
-    return this;
-  }
+  ix copy({int? bits, int? value}) =>
+      ix(bits: bits ?? _bits, value: value ?? _value);
+
+  ix ofSameBit(int value) => ix(bits: bits, value: value);
 
   @override
-  ix operator &(integer other) {
-    _value = (value & other.value).intX(bits);
-    return this;
-  }
+  ix operator *(integer other) => ofSameBit(value * other.value);
 
   @override
-  ix operator |(integer other) {
-    _value = (value | other.value).intX(bits);
-    return this;
-  }
+  ix operator +(integer other) => ofSameBit(value + other.value);
 
   @override
-  ix operator ^(integer other) {
-    _value = (value ^ other.value).intX(bits);
-    return this;
-  }
+  ix operator -(integer other) => ofSameBit(value - other.value);
 
   @override
-  ix operator ~() {
-    _value = (~value).intX(bits);
-    return this;
-  }
+  double operator /(integer other) => value / other.value;
 
   @override
-  ix operator <<(integer other) {
-    _value = (value << other.value).intX(bits);
-    return this;
-  }
+  ix operator ~/(integer other) => ofSameBit(value ~/ other.value);
 
   @override
-  ix operator >>(integer other) {
-    _value = (value >> other.value).intX(bits);
-    return this;
-  }
+  ix operator &(integer other) => ofSameBit(value & other.value);
 
   @override
-  ix operator >>>(integer other) {
-    _value = (value >>> other.value).intX(bits);
-    return this;
-  }
+  ix operator |(integer other) => ofSameBit(value | other.value);
 
   @override
-  ix modPow(integer exponent, integer modulus) {
-    _value = (value.modPow(exponent.value, modulus.value)).intX(bits);
-    return this;
-  }
+  ix operator ^(integer other) => ofSameBit(value ^ other.value);
 
   @override
-  ix modInverse(integer modulus) {
-    _value = (value.modInverse(modulus.value)).intX(bits);
-    return this;
-  }
+  ix operator ~() => ofSameBit(~value);
 
   @override
-  ix gcd(integer other) {
-    _value = (value.gcd(other.value)).intX(bits);
-    return this;
-  }
+  ix operator <<(integer other) => ofSameBit(value << other.value);
 
   @override
-  bool get isEven => _value.isEven;
+  ix operator >>(integer other) => ofSameBit(value >> other.value);
 
   @override
-  bool get isOdd => _value.isOdd;
-
-  int get bitLength => _bits;
+  ix operator >>>(integer other) => ofSameBit(value >>> other.value);
 
   @override
-  ix toUnsigned(integer width) {
-    _value = value.toUnsigned(width.value).intX(bits);
-    return this;
-  }
+  ix modPow(integer exponent, integer modulus) =>
+      ofSameBit(value.modPow(exponent.value, modulus.value));
 
   @override
-  ix toSigned(integer width) {
-    _value = value.toSigned(width.value).intX(bits);
-    return this;
-  }
+  ix modInverse(integer modulus) => ofSameBit(value.modInverse(modulus.value));
 
   @override
-  ix operator -() {
-    _value = (-_value).intX(bits);
-    return this;
-  }
+  ix gcd(integer other) => ofSameBit(value.gcd(other.value));
 
   @override
-  ux abs() {
-    _value = _value.abs().intX(bits);
-    return ux(bits: bits, value: value);
-  }
+  bool get isEven => value.isEven;
 
   @override
-  ix round() {
-    _value = _value.round().intX(bits);
-    return this;
-  }
+  bool get isOdd => value.isOdd;
 
   @override
-  ix floor() {
-    _value = _value.floor().intX(bits);
-    return this;
-  }
+  ux toUnsigned(UnsignedInteger bits) => ux(bits: bits.value, value: value);
 
   @override
-  ix ceil() {
-    _value = _value.ceil().intX(bits);
-    return this;
-  }
+  ix operator -() => ofSameBit(-value);
 
   @override
-  ix truncate() {
-    _value = _value.truncate().intX(bits);
-    return this;
-  }
+  ux abs() => ux(bits: (bits ~/ 2), value: value.abs());
 
   @override
-  double roundToDouble() {
-    return _value.roundToDouble();
-  }
+  ix round() => ofSameBit(value.round());
 
   @override
-  double floorToDouble() {
-    return _value.floorToDouble();
-  }
+  ix floor() => ofSameBit(value.floor());
 
   @override
-  double ceilToDouble() {
-    return _value.ceilToDouble();
-  }
+  ix ceil() => ofSameBit(value.ceil());
 
   @override
-  double truncateToDouble() {
-    return _value.truncateToDouble();
-  }
+  ix truncate() => ofSameBit(value.truncate());
 }
