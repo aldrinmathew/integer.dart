@@ -5,3 +5,4 @@ library integer;
 part 'types/integer.dart';
 part 'clamp_to_signed.dart';
 part 'clamp_to_unsigned.dart';
+part 'types/ix.dart';

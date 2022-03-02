@@ -42,6 +42,8 @@ abstract class integer {
 
   integer toSigned(integer width);
 
+  ix operator -();
+
   int get sign => _value.sign;
 
   integer round();
