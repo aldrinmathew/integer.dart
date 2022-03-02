@@ -14,6 +14,14 @@ abstract class integer {
 
   integer operator *(integer other);
 
+  integer operator +(integer other);
+
+  integer operator -(integer other);
+
+  double operator /(integer other);
+
+  integer operator ~/(integer other);
+
   integer operator &(integer other);
 
   integer operator |(integer other);
@@ -38,13 +46,7 @@ abstract class integer {
 
   bool get isOdd => _value.isOdd;
 
-  integer toUnsigned(integer width);
-
-  integer toSigned(integer width);
-
-  ix operator -();
-
-  ux abs();
+  SignedInteger operator -();
 
   int get sign => _value.sign;
 
@@ -56,28 +58,30 @@ abstract class integer {
 
   integer truncate();
 
-  double roundToDouble() {
-    return _value.roundToDouble();
-  }
+  double roundToDouble() => _value.roundToDouble();
 
-  double floorToDouble() {
-    return _value.floorToDouble();
-  }
+  double floorToDouble() => _value.floorToDouble();
 
-  double ceilToDouble() {
-    return _value.ceilToDouble();
-  }
+  double ceilToDouble() => _value.ceilToDouble();
 
-  double truncateToDouble() {
-    return _value.truncateToDouble();
-  }
+  double truncateToDouble() => _value.truncateToDouble();
 
   @override
-  String toString() {
-    return value.toString();
-  }
+  String toString() => value.toString();
 
-  String toRadixString(int radix) {
-    return value.toRadixString(radix);
-  }
+  String toRadixString(int radix) => value.toRadixString(radix);
+}
+
+abstract class SignedInteger extends integer {
+  SignedInteger({required int value}) : super(value: value);
+
+  UnsignedInteger toUnsigned(UnsignedInteger bits);
+
+  UnsignedInteger abs();
+}
+
+abstract class UnsignedInteger extends integer {
+  UnsignedInteger({required int value}) : super(value: value);
+
+  SignedInteger toSigned(UnsignedInteger bits);
 }
