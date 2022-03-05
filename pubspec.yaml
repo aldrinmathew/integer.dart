@@ -1,6 +1,6 @@
 name: integer
 description: Use custom bitwidth integers like uint16 or int32 seamlessly via getters and datatypes
-version: 1.0.0
+version: 2.0.0
 homepage: https://github.com/aldrinsartfactory/integer.dart
 repository: https://github.com/aldrinsartfactory/integer.dart
 
