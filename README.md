@@ -1,4 +1,4 @@
-## Integer
+## **`integer`**
 
 Dart's native integers in custom bitwidth integer format. There are getters for `int`, to get the appropriate datatypes you need.
 
