@@ -117,7 +117,7 @@ class ux extends unsigned {
     } else if (other is double) {
       return ofSameBit((value * other).truncate());
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -136,7 +136,7 @@ class ux extends unsigned {
     } else if (other is double) {
       return ofSameBit((value + other).truncate());
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -155,7 +155,7 @@ class ux extends unsigned {
     } else if (other is double) {
       return ofSameBit((value - other).truncate());
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -183,7 +183,55 @@ class ux extends unsigned {
     } else if (other is double) {
       return ofSameBit(value ~/ other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
+    }
+  }
+
+  /// Euclidean modulo of this number by [other].
+  ///
+  /// Returns the remainder of the Euclidean division.
+  /// The Euclidean division of two integers `a` and `b`
+  /// yields two integers `q` and `r` such that
+  /// `a == b * q + r` and `0 <= r < b.abs()`.
+  ///
+  /// The Euclidean division is only defined for integers, but can be easily
+  /// extended to work with doubles. In that case, `q` is still an integer,
+  /// but `r` may have a non-integer value that still satisfies `0 <= r < |b|`.
+  ///
+  /// The sign of the returned value `r` is always positive.
+  ///
+  /// See [remainder] for the remainder of the truncating division.
+  ///
+  /// Returns `ux`
+  @override
+  ux operator %(dynamic other) {
+    if (other is integer) {
+      return ofSameBit(value % other.value);
+    } else if (other is int) {
+      return ofSameBit(value % other);
+    } else if (other is double) {
+      return ofSameBit((value % other).truncate());
+    } else {
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
+    }
+  }
+
+  /// The remainder of the truncating division of `this` by [other].
+  ///
+  /// The result `r` of this operation satisfies:
+  /// `this == (this ~/ other) * other + r`.
+  /// As a consequence, the remainder `r` has the same sign as the divider
+  /// `this`.
+  @override
+  ux remainder(dynamic other) {
+    if (other is integer) {
+      return ofSameBit(value.remainder(other.value));
+    } else if (other is int) {
+      return ofSameBit(value.remainder(other));
+    } else if (other is double) {
+      return ofSameBit((value.remainder(other)).truncate());
+    } else {
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -204,7 +252,7 @@ class ux extends unsigned {
     } else if (other is int) {
       return ofSameBit(value & other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -225,7 +273,7 @@ class ux extends unsigned {
     } else if (other is int) {
       return ofSameBit(value | other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -246,7 +294,7 @@ class ux extends unsigned {
     } else if (other is int) {
       return ofSameBit(value ^ other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -280,7 +328,7 @@ class ux extends unsigned {
     } else if (other is int) {
       return ofSameBit(value << other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -300,7 +348,7 @@ class ux extends unsigned {
     } else if (other is int) {
       return ofSameBit(value >> other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
@@ -320,7 +368,7 @@ class ux extends unsigned {
     } else if (other is int) {
       return ofSameBit(value >>> other);
     } else {
-      throw Exception('Invalid type for operand: ${dynamic.runtimeType}');
+      throw Exception('Invalid type for operand: ${other.runtimeType}');
     }
   }
 
