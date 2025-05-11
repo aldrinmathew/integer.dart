@@ -1,6 +1,6 @@
 name: integer
 description: Dart's native integers in custom bit-width format like i2, i4, i8, i16, i32, ix and u1, u2, u4, u8, u16, u32, ux...
-version: 2.0.1
+version: 2.0.2
 homepage: https://github.com/aldrinsartfactory/integer.dart
 repository: https://github.com/aldrinsartfactory/integer.dart
 
